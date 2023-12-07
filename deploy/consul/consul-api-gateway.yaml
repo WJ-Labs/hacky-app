@@ -21,7 +21,7 @@ spec:
       certificateRefs:
         - name: hacky-app-wjlabs-xyz-tls
           kind: Secret
-          group: core
+          group: ""
       options:
         api-gateway.consul.hashicorp.com/tls_min_version: "TLSv1_2"
   # - protocol: HTTP
