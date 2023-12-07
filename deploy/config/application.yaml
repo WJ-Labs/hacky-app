@@ -17,3 +17,10 @@ spec:
   - path: deploy/apigw
     repoURL: https://github.com/WJ-Labs/hacky-app
     targetRevision: develop
+  - chart: sample-app
+    path: charts/sample-app
+    repoURL: https://github.com/WJ-Labs/hacky-app
+    targetRevision: develop
+    helm:
+      releaseName: sample-app-v1
+      valuesFile: values-v1.yaml
