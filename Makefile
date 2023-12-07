@@ -1,8 +1,10 @@
-.PHONY: all build stop run test
+.PHONY: all build stop run test package-helm-chart publish-helm-chart
 
 NAME := app
+HELM_REPO := gs://wjlabs_helm_charts
 CONTAINER_PORT := 8080
 HOST_PORT ?= 8888
+VERSION ?= $(shell git describe --tags)
 
 all: build stop run test
 
@@ -18,3 +20,9 @@ run:
 test:
 	@curl localhost:$(HOST_PORT) > /dev/null 2>&1 || sleep 1
 	@curl localhost:$(HOST_PORT)
+
+package-helm-chart:
+	helm package --version $(VERSION) --app-version $(VERSION) charts/sample-app
+
+publish-helm-chart:
+	gsutil cp sample-app-$(VERSION).tgz $(HELM_REPO)/

@@ -35,5 +35,5 @@ spec:
     targetRevision: v2
     helm:
       releaseName: sample-app-v2
-      valueFiles: 
+      valueFiles:
       - values-v2.yaml

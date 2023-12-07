@@ -12,6 +12,25 @@ defaults:
     shell: bash
 
 jobs:
+  helm_chart:
+    runs-on: [ self-hosted, Linux, X64, hacky ]
+    steps:
+    - name: Checkout repository
+      id: checkout_repo
+      uses: actions/checkout@1e31de5234b9f8995739874a8ce0492dc87873e2 # v4.0.0
+      with:
+        fetch-depth: 0
+        fetch-tags: true
+
+    - name: Package Helm Chart
+      id: package_helm_chart
+      run: make package-helm-chart
+
+    - name: Publish Helm Chart
+      id: publish_helm_chart
+      if: ${{ github.event_name == 'push' }}
+      run: make publish-helm-chart
+
   terraform_cicd:
     runs-on: [ self-hosted, Linux, X64, hacky ]
     defaults:
