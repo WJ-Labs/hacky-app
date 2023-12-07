@@ -10,11 +10,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      {{- include "sample-app.selectorLabels" . | nindent 6 }}
+      service: sample-app
+      app: sample-app
   template:
     metadata:
       labels:
-        {{- include "sample-app.selectorLabels" . | nindent 8 }}
+        service: sample-app
+        app: sample-app
       annotations:
         consul.hashicorp.com/connect-inject: "true"
         consul.hashicorp.com/transparent-proxy: "true"
