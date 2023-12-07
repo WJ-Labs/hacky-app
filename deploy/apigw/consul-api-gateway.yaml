@@ -9,7 +9,8 @@ metadata:
 spec:
   gatewayClassName: consul
   listeners:
-  - protocol: HTTPS
+  - hostname: hacky-app.wjlabs.xyz
+    protocol: HTTPS
     port: 443
     name: https
     allowedRoutes:
