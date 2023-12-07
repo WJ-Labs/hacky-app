@@ -10,6 +10,10 @@ metadata:
     name: hacky-app
 spec:
   project: default
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
   destination:
     namespace: hacky-app
     server: https://kubernetes.default.svc
@@ -22,6 +26,6 @@ spec:
     repoURL: gs://wjlabs_helm_charts
     targetRevision: 0.1.0
     helm:
-      releaseName: sample-app-v1
+      releaseName: sample-app-0-1-0
       valueFiles: 
-      - values-0.1.0.yaml
+      - values-0-1-0.yaml
