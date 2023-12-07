@@ -17,6 +17,7 @@ spec:
         {{- include "sample-app.selectorLabels" . | nindent 8 }}
       annotations:
         consul.hashicorp.com/connect-inject: "true"
+        consul.hashicorp.com/transparent-proxy: "true"
         consul.hashicorp.com/service-meta-version: "{{ $serviceVersion }}"
         consul.hashicorp.com/service-tags: "{{ $serviceVersion }}"
     spec:
