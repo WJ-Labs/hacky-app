@@ -4,12 +4,26 @@ kind: Gateway
 metadata:
   name: api-gateway
   namespace: consul
+  annotations:
+    cert-manager.io/issuer: hacky-issuer
 spec:
   gatewayClassName: consul
   listeners:
-  - protocol: HTTP
-    port: 80
-    name: http
+  - protocol: HTTPS
+    port: 443
+    name: https
     allowedRoutes:
       namespaces:
         from: All
+    tls:
+      mode: Terminate
+      certificateRef:
+        name: hacky-app-wjlabs-xyz-tls
+        kind: Secret
+        group: core
+  # - protocol: HTTP
+  #   port: 80
+  #   name: http
+  #   allowedRoutes:
+  #     namespaces:
+  #       from: All

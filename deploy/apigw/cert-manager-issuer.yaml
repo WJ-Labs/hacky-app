@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: hacky-issuer
+  namespace: consul
+spec:
+  acme:
+    solvers:
+    - dns01:
+        cloudDNS:
+          project: wj-labs-407316
