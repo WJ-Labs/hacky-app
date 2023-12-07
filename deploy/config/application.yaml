@@ -27,7 +27,7 @@ spec:
     targetRevision: v1
     helm:
       releaseName: sample-app-v1
-      valueFiles: 
+      valueFiles:
       - values-v1.yaml
   - chart: sample-app
     path: charts/sample-app
