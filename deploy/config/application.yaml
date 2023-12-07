@@ -23,4 +23,5 @@ spec:
     targetRevision: 0.1.0
     helm:
       releaseName: sample-app-v1
-      valuesFile: values-v1.yaml
+      valueFiles: 
+      - values-0.1.0.yaml
