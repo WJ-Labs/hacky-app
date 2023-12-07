@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "hello-world.fullname" . }}
+  labels:
+    app: cluster-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cluster-1
+  template:
+    metadata:
+      labels:
+        app: cluster-1
+    spec:
+      containers:
+      - name: clouddns
+        image: javierlga/clouddns:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+          - name: CLUSTER
+            value: "cluster-1"
