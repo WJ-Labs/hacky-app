@@ -20,6 +20,7 @@ spec:
       mode: Terminate
       certificateRefs:
         - name: hacky-app-wjlabs-xyz-tls
+          namespace: consul
           kind: Secret
           group: core
   # - protocol: HTTP
