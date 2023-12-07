@@ -28,4 +28,4 @@ spec:
     helm:
       releaseName: sample-app-0-1-0
       valueFiles: 
-      - values-v1.yaml
+      - values-0.1.0.yaml
