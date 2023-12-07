@@ -18,7 +18,7 @@ spec:
     namespace: hacky-app
     server: https://kubernetes.default.svc
   sources:
-  - path: deploy/apigw
+  - path: deploy/consul
     repoURL: https://github.com/WJ-Labs/hacky-app
     targetRevision: develop
   - chart: sample-app

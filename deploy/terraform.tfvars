@@ -1,3 +1,3 @@
-manifest = "config/application.yaml"
+manifest = "argocd/application.yaml"
 
 cluster_name = "hacky-cluster"
