@@ -18,6 +18,8 @@ spec:
   parentRefs:
   - name: api-gateway
     namespace: consul
+  hostnames:
+  - "hacky-app.wjlabs.xyz"
   rules:
   - matches:
     - path:

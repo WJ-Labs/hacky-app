@@ -7,9 +7,19 @@ metadata:
 spec:
   gatewayClassName: consul
   listeners:
-  - protocol: HTTP
-    port: 80
-    name: http
+  - protocol: HTTPS
+    port: 443
+    name: https
     allowedRoutes:
       namespaces:
         from: All
+    tls:
+      mode: Terminate
+      options:
+        networking.gke.io/pre-shared-certs: hacky-app-wjlabs-xyz
+  # - protocol: HTTP
+  #   port: 80
+  #   name: http
+  #   allowedRoutes:
+  #     namespaces:
+  #       from: All
