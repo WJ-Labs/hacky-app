@@ -2,6 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: hacky-app-wjlabs-xyz-tls
+  namespace: consul
 spec:
   issuerRef:
     name: hacky-issuer
