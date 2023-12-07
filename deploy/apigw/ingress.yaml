@@ -5,7 +5,7 @@ metadata:
   name: api-gateway-hashicups
 spec:
   destination:
-    name: nginx
+    name: sample-app
   sources:
     - name: api-gateway
       action: allow
@@ -25,5 +25,5 @@ spec:
         value: /
     backendRefs:
     - kind: Service
-      name: nginx
+      name: sample-app
       port: 80

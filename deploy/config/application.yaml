@@ -24,8 +24,8 @@ spec:
   - chart: sample-app
     path: charts/sample-app
     repoURL: gs://wjlabs_helm_charts
-    targetRevision: 0.1.0
+    targetRevision: v1
     helm:
-      releaseName: sample-app-0-1-0
+      releaseName: sample-app-v1
       valueFiles: 
-      - values-0.1.0.yaml
+      - values-v1.yaml
