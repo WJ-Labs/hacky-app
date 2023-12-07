@@ -18,10 +18,10 @@ spec:
         from: All
     tls:
       mode: Terminate
-      certificateRef:
-        name: hacky-app-wjlabs-xyz-tls
-        kind: Secret
-        group: core
+      certificateRefs:
+        - name: hacky-app-wjlabs-xyz-tls
+          kind: Secret
+          group: core
   # - protocol: HTTP
   #   port: 80
   #   name: http
