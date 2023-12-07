@@ -22,7 +22,7 @@ spec:
         - name: hacky-app-wjlabs-xyz-tls
           namespace: consul
           kind: Secret
-          group: core
+          group: ""
   # - protocol: HTTP
   #   port: 80
   #   name: http
