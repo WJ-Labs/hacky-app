@@ -2,4 +2,4 @@ nameOverride: ""
 fullnameOverride: ""
 
 image:
-  repository: javierlga/sample-app
+  repository: wasosa/sample-app
