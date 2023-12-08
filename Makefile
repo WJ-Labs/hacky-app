@@ -1,7 +1,7 @@
-.PHONY: all build run test package-helm-chart publish-helm-chart
+.PHONY: all build run test package-helm-chart publish-helm-chart deploy
 
 
-VERSION ?= v0.0.0
+VERSION ?= $(shell git describe --tags --long)
 IMAGE := wasosa/sample-app:$(VERSION)
 REPO := wjlabs_helm_charts
 PORT ?= 8888
@@ -28,3 +28,6 @@ publish-helm-chart:
 
 publish-docker-image:
 	docker push $(IMAGE)
+
+deploy:
+	cd deploy && terraform init && terraform apply
