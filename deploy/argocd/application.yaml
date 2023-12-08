@@ -33,3 +33,9 @@ spec:
     targetRevision: v3
     helm:
       releaseName: sample-app-v3
+  - chart: sample-app
+    path: charts/sample-app
+    repoURL: us-west1-docker.pkg.dev/wj-labs-407316/charts
+    targetRevision: v4
+    helm:
+      releaseName: sample-app-v4
