@@ -21,7 +21,7 @@ def get_version():
             <title>Hacky App {app_version}</title>
           </head>
           <h1 style="text-align:center;">This server is running version:</h1>
-          <div style="text-align:center; color:red;font-size:3.0rem;">{app_version}</div>
+          <div style="text-align:center; color:green;font-size:3.0rem;">{app_version}</div>
         </html>
     """
     )
