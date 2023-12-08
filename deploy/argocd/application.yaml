@@ -37,15 +37,3 @@ spec:
       releaseName: sample-app-v2
       valueFiles:
       - values-v2.yaml
-  - chart: sample-app
-    path: charts/sample-app
-    repoURL: gs://wjlabs_helm_charts
-    targetRevision: v3
-    helm:
-      releaseName: sample-app-v3
-  - chart: sample-app
-    path: charts/sample-app
-    repoURL: gs://wjlabs_helm_charts
-    targetRevision: v4
-    helm:
-      releaseName: sample-app-v4
