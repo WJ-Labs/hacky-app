@@ -20,8 +20,14 @@ def get_version():
             <meta name="viewport" content="width=device-width, initial-scale=10.0" />
             <title>Hacky App {app_version}</title>
           </head>
-          <h1 style="text-align:center;">This server is running version:</h1>
-          <div style="text-align:center; color:green;font-size:3.0rem;">{app_version}</div>
+          <style>
+            body { background-image: url('netskope.jpg'); }
+          </style>
+          <body>
+            <h1>Netskope Hackathon 2023</h1>
+            <h1>This server is running version:</h1>
+            <div>{app_version}</div>
+          </body>
         </html>
     """
     )
