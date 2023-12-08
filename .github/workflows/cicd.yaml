@@ -6,6 +6,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - v*
 
 defaults:
   run:
@@ -22,17 +24,30 @@ jobs:
         fetch-depth: 0
         fetch-tags: true
 
-    - name: Package Helm Chart
-      id: package_helm_chart
+    - name: Package Helm Chart (latest)
+      id: package_helm_chart_latest
+      if: ${{ github.event_name != 'tag' }}
+      run: make package-helm-chart VERSION=v0.0.0-latest
+
+    - name: Publish Helm Chart (latest)
+      id: publish_helm_chart_latest
+      if: ${{ github.event_name == 'push' }}
+      run: make publish-helm-chart VERSION=v0.0.0-latest
+
+    - name: Package Helm Chart (tag)
+      id: package_helm_chart_tag
+      if: ${{ github.event_name == 'tag' }}
       run: make package-helm-chart
 
-    - name: Publish Helm Chart
-      id: publish_helm_chart
-      if: ${{ github.event_name == 'push' }}
+    - name: Publish Helm Chart (tag)
+      id: publish_helm_chart_tag
+      if: ${{ github.event_name == 'tag' }}
       run: make publish-helm-chart
+
 
   terraform_cicd:
     runs-on: [ self-hosted, Linux, X64, hacky ]
+    if: ${{ github.event_name != 'tag' }}
     defaults:
       run:
         working-directory: deploy
