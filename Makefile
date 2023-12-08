@@ -1,7 +1,7 @@
 .PHONY: all build run test package-helm-chart publish-helm-chart
 
 
-VERSION ?= v0.0.0-latest
+VERSION ?= v0.0.0
 IMAGE := wasosa/sample-app:$(VERSION)
 REPO := wjlabs_helm_charts
 PORT ?= 8888
