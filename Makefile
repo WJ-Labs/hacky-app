@@ -26,4 +26,4 @@ package-helm-chart:
 
 publish-helm-chart:
 	helm repo add $(HELM_REPO) gs://$(HELM_REPO)
-	helm gcs push sample-app-$(VERSION).tgz $(HELM_REPO)
+	helm gcs push --force sample-app-$(VERSION).tgz $(HELM_REPO)
