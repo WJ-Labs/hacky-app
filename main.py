@@ -19,11 +19,24 @@ def get_version():
           <head>
             <meta name="viewport" content="width=device-width, initial-scale=10.0" />
             <title>Hacky App {app_version}</title>
+            <style>
+              body {{
+                background-image: url('https://www.netskope.com/wp-content/uploads/2022/05/1920-Dark-Hero-Background-1920x845-1.jpg');
+                font-family: Tahoma, sans-serif;
+                font-size: 1.0rem;
+                text-align: center;
+                color: white;
+                outline-color: black;
+              }}
+            </style>
           </head>
-          <h1 style="text-align:center;">This server is running version:</h1>
-          <div style="text-align:center; color:green;font-size:3.0rem;">{app_version}</div>
+          <body>
+            <h1>Netskope Hackathon 2023</h1>
+            <h1>This server is running version:</h1>
+            <h1>{app_version}</h1>
+          </body>
         </html>
-    """
+        """
     )
 
 
