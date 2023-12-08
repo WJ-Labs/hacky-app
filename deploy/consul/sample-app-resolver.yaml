@@ -5,8 +5,8 @@ metadata:
 spec:
   defaultSubset: v1
   subsets:
-    v1:
-      filter: 'Service.Meta.version == v1'
+    1.0.0:
+      filter: 'Service.Meta.version == 1.0.0'
     v2:
       filter: 'Service.Meta.version == v2'
     v3:

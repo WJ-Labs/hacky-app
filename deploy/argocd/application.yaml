@@ -20,7 +20,7 @@ spec:
   sources:
   - path: deploy/consul
     repoURL: https://github.com/WJ-Labs/hacky-app
-    targetRevision: develop
+    targetRevision: main
   - chart: sample-app
     path: charts/sample-app
     repoURL: gs://wjlabs_helm_charts
