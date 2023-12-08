@@ -33,3 +33,9 @@ spec:
     targetRevision: v2
     helm:
       releaseName: sample-app-v2
+  - chart: sample-app
+    path: charts/sample-app
+    repoURL: gs://wjlabs_helm_charts
+    targetRevision: v3
+    helm:
+      releaseName: sample-app-v3
