@@ -1,29 +1,30 @@
-.PHONY: all build stop run test package-helm-chart publish-helm-chart
+.PHONY: all build run test package-helm-chart publish-helm-chart
 
-NAME := app
-HELM_REPO := wjlabs_helm_charts
-CONTAINER_PORT := 8080
-HOST_PORT ?= 8888
-VERSION ?= $(shell git describe --tags)
 
-all: build stop run test
+VERSION ?= v0.0.0-latest
+IMAGE := wasosa/sample-app:$(VERSION)
+REPO := wjlabs_helm_charts
+PORT ?= 8888
+
+all: build run test
 
 build: Dockerfile
-	docker build --tag $(NAME) .
-
-stop:
-	docker rm --force $(NAME)
+	docker build --build-arg APP_VERSION=$(VERSION) --tag $(IMAGE) .
 
 run:
-	docker run --rm --tty --interactive --detach --name $(NAME) --env APP_VERSION=1 --publish $(HOST_PORT):$(CONTAINER_PORT) $(NAME)
+	docker rm --force app
+	docker run --rm --tty --interactive --detach --name app --publish $(PORT):8080 $(IMAGE)
 
 test:
-	@curl localhost:$(HOST_PORT) > /dev/null 2>&1 || sleep 1
-	@curl localhost:$(HOST_PORT)
+	@curl localhost:$(PORT) > /dev/null 2>&1 || sleep 1
+	@curl localhost:$(PORT)
 
 package-helm-chart:
 	helm package --version $(VERSION) --app-version $(VERSION) charts/sample-app
 
 publish-helm-chart:
-	helm repo add $(HELM_REPO) gs://$(HELM_REPO)
-	helm gcs push --force sample-app-$(VERSION).tgz $(HELM_REPO)
+	helm repo add $(REPO) gs://$(REPO)
+	helm gcs push --force sample-app-$(VERSION).tgz $(REPO)
+
+publish-docker-image:
+	docker push $(IMAGE)

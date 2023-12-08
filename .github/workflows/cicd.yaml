@@ -14,6 +14,32 @@ defaults:
     shell: bash
 
 jobs:
+  docker_image:
+    runs-on: [ self-hosted, Linux, X64, hacky ]
+    steps:
+    - name: Checkout repository
+      id: checkout_repo
+      uses: actions/checkout@1e31de5234b9f8995739874a8ce0492dc87873e2 # v4.0.0
+      with:
+        fetch-depth: 0
+        fetch-tags: true
+
+    - name: Docker Image
+      id: docker_image
+      run: |
+        env
+        if [ "$GITHUB_REF_TYPE" == "tag" ]
+        then
+          export VERSION="$GITHUB_REF_NAME"
+        fi
+        if [ "$GITHUB_EVENT_NAME" == "pull_request" ]
+        then
+          make build
+        else
+          make build
+          make publish-docker-image
+        fi
+
   helm_chart:
     runs-on: [ self-hosted, Linux, X64, hacky ]
     steps:
@@ -24,26 +50,21 @@ jobs:
         fetch-depth: 0
         fetch-tags: true
 
-    - name: Package Helm Chart (latest)
-      id: package_helm_chart_latest
-      if: ${{ github.event_name != 'tag' }}
-      run: make package-helm-chart VERSION=v0.0.0-latest
-
-    - name: Publish Helm Chart (latest)
-      id: publish_helm_chart_latest
-      if: ${{ github.event_name == 'push' }}
-      run: make publish-helm-chart VERSION=v0.0.0-latest
-
-    - name: Package Helm Chart (tag)
-      id: package_helm_chart_tag
-      if: ${{ github.event_name == 'tag' }}
-      run: make package-helm-chart
-
-    - name: Publish Helm Chart (tag)
-      id: publish_helm_chart_tag
-      if: ${{ github.event_name == 'tag' }}
-      run: make publish-helm-chart
-
+    - name: Helm Chart
+      id: helm_chart
+      run: |
+        env
+        if [ "$GITHUB_REF_TYPE" == "tag" ]
+        then
+          export VERSION="$GITHUB_REF_NAME"
+        fi
+        if [ "$GITHUB_EVENT_NAME" == "pull_request" ]
+        then
+          make package-helm-chart
+        else
+          make package-helm-chart
+          make publish-helm-chart
+        fi
 
   terraform_cicd:
     runs-on: [ self-hosted, Linux, X64, hacky ]
