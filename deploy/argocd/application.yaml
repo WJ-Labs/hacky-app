@@ -23,19 +23,19 @@ spec:
     targetRevision: main
   - chart: sample-app
     path: charts/sample-app
-    repoURL: gs://wjlabs_helm_charts
+    repoURL: us-west1-docker.pkg.dev/wj-labs-407316/charts
     targetRevision: v1
     helm:
       releaseName: sample-app-v1
   - chart: sample-app
     path: charts/sample-app
-    repoURL: gs://wjlabs_helm_charts
+    repoURL: us-west1-docker.pkg.dev/wj-labs-407316/charts
     targetRevision: v2
     helm:
       releaseName: sample-app-v2
   - chart: sample-app
     path: charts/sample-app
-    repoURL: gs://wjlabs_helm_charts
+    repoURL: us-west1-docker.pkg.dev/wj-labs-407316/charts
     targetRevision: v3
     helm:
       releaseName: sample-app-v3

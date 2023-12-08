@@ -3,7 +3,7 @@
 
 VERSION ?= $(shell git describe --tags --long)
 IMAGE := wasosa/sample-app:$(VERSION)
-REPO := wjlabs_helm_charts
+REPO := oci://us-west1-docker.pkg.dev/wj-labs-407316/charts
 PORT ?= 8888
 
 all: build run test
@@ -23,8 +23,7 @@ package-helm-chart:
 	helm package --version $(VERSION) --app-version $(VERSION) charts/sample-app
 
 publish-helm-chart:
-	helm repo add $(REPO) gs://$(REPO)
-	helm gcs push --force sample-app-$(VERSION).tgz $(REPO)
+	helm push sample-app-$(VERSION).tgz $(REPO)
 
 publish-docker-image:
 	docker push $(IMAGE)
