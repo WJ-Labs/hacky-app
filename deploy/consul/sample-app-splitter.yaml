@@ -5,6 +5,6 @@ metadata:
 spec:
   splits:
     - weight: 50
-      serviceSubset: v5
-    - weight: 50
       serviceSubset: v6
+    - weight: 50
+      serviceSubset: v7
