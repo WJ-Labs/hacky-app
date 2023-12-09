@@ -3,7 +3,7 @@ kind: ServiceResolver
 metadata:
   name: sample-app
 spec:
-  defaultSubset: v4
+  defaultSubset: v5
   subsets:
     v1:
       filter: 'Service.Meta.version == v1'
@@ -15,3 +15,5 @@ spec:
       filter: 'Service.Meta.version == v4'
     v5:
       filter: 'Service.Meta.version == v5'
+    v6:
+      filter: 'Service.Meta.version == v6'
